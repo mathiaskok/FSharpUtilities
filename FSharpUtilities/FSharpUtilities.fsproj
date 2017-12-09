@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Library.fs" />
+    <Compile Include="General.fs" />
+    <Compile Include="Option.fs" />
+    <Compile Include="Result\Result.fs" />
+    <Compile Include="Result\ResultBuilder.fs" />
   </ItemGroup>
 
 </Project>

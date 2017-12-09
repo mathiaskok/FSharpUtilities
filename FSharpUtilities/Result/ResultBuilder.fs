@@ -9,5 +9,7 @@ module ResultBuilder =
 
     member __.Return(s) = Success s
 
+    member __.ReturnFrom(r) = r
+
 
   let result = ResultBuilder()
