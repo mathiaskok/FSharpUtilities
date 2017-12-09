@@ -13,3 +13,22 @@ module ResultBuilder =
 
 
   let result = ResultBuilder()
+
+  type YieldResultBuilder<'s, 'f>
+    (
+      sCombiner: 's -> 's -> 's, 
+      fCombiner: 'f -> 'f -> 'f
+    ) =
+
+    member __.Bind(r, binder) = bind r binder
+
+    member __.Yield(s) = Success s
+
+    member __.YieldFrom(r) = r
+
+    member __.Combine(r1, r2) = combine sCombiner fCombiner r1 r2
+
+    member __.Delay(f) = f()
+
+
+  let yieldResult sCombiner fCombiner = YieldResultBuilder(sCombiner, fCombiner)
