@@ -7,6 +7,7 @@
   <ItemGroup>
     <Compile Include="General.fs" />
     <Compile Include="Lazy\Lazy.fs" />
+    <Compile Include="Lazy\LazyBuilder.fs" />
     <Compile Include="Option.fs" />
     <Compile Include="Result\Result.fs" />
     <Compile Include="Result\ResultBuilder.fs" />
