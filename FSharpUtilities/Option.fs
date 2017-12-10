@@ -1,5 +1,6 @@
 ﻿namespace FSharpUtilities
 
+open FSharpUtilities.General
 open System
 
 module Option =
@@ -11,7 +12,7 @@ module Option =
       let res = mapper x
       match res with
       | null -> None
-      | _ -> Some res
+      | _ -> Some res    
 
   let mapNullable (mapper: 'a -> 'b Nullable) mx =
     match mx with
@@ -30,25 +31,11 @@ module Option =
   let (<*>) = apply
 
   let (>>=) = Option.bind
-  
-  let bindObj mx binder =
-    match mx with
-    | None -> None
-    | Some x ->
-      let res = binder x
-      match res with
-      | null -> None
-      | _ -> Some res
+
+  let bindObj x y = flip mapObj x y
 
   let (>>=!) = bindObj
 
-  let bindNullable mx (binder: 'a -> 'b Nullable) =
-    match mx with
-    | None -> None
-    | Some x -> 
-      let res = binder x
-      match res.HasValue with
-      | true -> Some res.Value
-      | false -> None
+  let bindNullable x y = flip mapNullable x y
 
   let (>>=?) = bindNullable

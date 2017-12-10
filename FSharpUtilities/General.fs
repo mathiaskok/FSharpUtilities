@@ -10,3 +10,5 @@ module General =
   let curry3 f x y z = f (x, y, z)
   let curry4 f x y z t = f (x, y, z, t)
   let curry5 f x y z t u = f (x, y, z, t, u)
+
+  let flip f x y = f y x
