@@ -8,20 +8,12 @@ module Option =
   let mapObj mapper mx = 
     match mx with
     | None -> None
-    | Some x -> 
-      let res = mapper x
-      match res with
-      | null -> None
-      | _ -> Some res    
+    | Some x -> mapper x |> Option.ofObj
 
   let mapNullable (mapper: 'a -> 'b Nullable) mx =
     match mx with
     | None -> None
-    | Some x ->
-      let res = mapper x
-      match res.HasValue with
-      | true -> Some res.Value
-      | false -> None
+    | Some x -> mapper x |> Option.ofNullable
 
   let apply mf mx = 
     match mf with
