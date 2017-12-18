@@ -9,8 +9,11 @@
     <Compile Include="Lazy\Lazy.fs" />
     <Compile Include="Lazy\LazyBuilder.fs" />
     <Compile Include="Option.fs" />
+    <Compile Include="Reader.fs" />
     <Compile Include="Result\Result.fs" />
     <Compile Include="Result\ResultBuilder.fs" />
+    <Compile Include="State.fs" />
+    <Compile Include="Writer.fs" />
   </ItemGroup>
 
 </Project>
