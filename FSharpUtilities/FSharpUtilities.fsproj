@@ -8,7 +8,8 @@
     <Compile Include="General.fs" />
     <Compile Include="Lazy\Lazy.fs" />
     <Compile Include="Lazy\LazyBuilder.fs" />
-    <Compile Include="Option.fs" />
+    <Compile Include="Option\Option.fs" />
+    <Compile Include="Option\OptionBuilder.fs" />
     <Compile Include="Reader.fs" />
     <Compile Include="Result\Result.fs" />
     <Compile Include="Result\ResultBuilder.fs" />
