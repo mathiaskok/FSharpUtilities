@@ -29,3 +29,5 @@ let (>>=!) = bindObj
 let bindNullable x y = flip mapNullable x y
 
 let (>>=?) = bindNullable
+
+let join m = Option.bind id m
