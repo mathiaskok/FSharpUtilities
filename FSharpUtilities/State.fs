@@ -1,13 +1,15 @@
-﻿namespace FSharpUtilities
-module State =
+﻿module FSharpUtilities.State
 
-  type StateBuilder() =
-    member __.Return(x) = fun s -> (x, s)
-    
-    member __.ReturnFrom(s) = s
+type State<'s, 'a> = 's -> 'a * 's
 
-    member __.Binder(state, binder) =
-      fun s ->
-        let (value, state) = state s
-        let (value', state') = binder value state
-        (value', state')
+type StateBuilder() =
+  member __.Return(x) : State<'s, 'a> = fun s -> (x, s)
+  
+  member __.ReturnFrom(s) = s
+
+  member __.Bind(state: State<'s, 'a>, binder: 'a -> State<'s, 'b>) : State<'s, 'b> =
+    fun s ->
+      let (value, state) = state s
+      binder value state
+
+let state = StateBuilder()
