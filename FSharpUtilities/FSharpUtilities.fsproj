@@ -13,7 +13,8 @@
     <Compile Include="Reader.fs" />
     <Compile Include="Result\Result.fs" />
     <Compile Include="Result\ResultBuilder.fs" />
-    <Compile Include="State.fs" />
+    <Compile Include="State\State.fs" />
+    <Compile Include="State\StateBuilder.fs" />
     <Compile Include="Writer.fs" />
   </ItemGroup>
 
