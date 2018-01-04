@@ -91,4 +91,4 @@ let pick chooser dict =
   pickI (raise (KeyNotFoundException())) id chooser dict
 
 let tryPick chooser dict = 
-  pickI (fun _ -> None Some chooser dict
+  pickI (fun _ -> None) Some chooser dict
