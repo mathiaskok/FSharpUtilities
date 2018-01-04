@@ -11,3 +11,5 @@ let bind (state: State<'s, 'a>) (binder: 'a -> State<'s, 'b>): State<'s, 'b> =
   fun s ->
     let (a, state) = state s
     binder a state
+
+let (>>=) = bind
