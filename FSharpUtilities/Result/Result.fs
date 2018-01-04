@@ -25,6 +25,8 @@ module Result =
 
   let (>>=) = bind
 
+  let join res = bind res id
+
   let map2 mapper rx ry = map mapper rx <*> ry
 
   let map3 mapper rx ry rz = map mapper rx <*> ry <*> rz
