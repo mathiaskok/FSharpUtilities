@@ -24,7 +24,7 @@ let tryFind a (dict: IReadOnlyDictionary<'a, 'b>) =
   | (true, x) -> Some x
   | (false, _) -> None
 
-let findKeyI cont mapper predicate (dict: IReadOnlyDictionary<'k, 'v>) =
+let private findKeyI cont mapper predicate (dict: IReadOnlyDictionary<'k, 'v>) =
   match Seq.tryFind (toKvpFun predicate) dict with
   | Some k -> mapper k.Key
   | None -> cont()
