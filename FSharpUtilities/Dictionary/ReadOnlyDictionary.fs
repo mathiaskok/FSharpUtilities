@@ -10,6 +10,8 @@ let private toKvpFolder f =
 
 let private kvpToTuple (kvp: KeyValuePair<'a, 'b>) = (kvp.Key, kvp.Value)
 
+let raiseKeyEx _ = raise (KeyNotFoundException())
+
 let count (dict: IReadOnlyDictionary<'a, 'b>) = dict.Count
 
 let containsKey (dict: IReadOnlyDictionary<'a, 'b>) = dict.ContainsKey
@@ -30,7 +32,7 @@ let private findKeyI cont mapper predicate (dict: IReadOnlyDictionary<'k, 'v>) =
   | None -> cont()
 
 let findKey predicate dict =
-  findKeyI (raise (KeyNotFoundException())) id predicate dict 
+  findKeyI raiseKeyEx id predicate dict 
 
 let tryFindKey predicate dict =
   findKeyI (fun _ -> None) Some predicate dict
@@ -88,7 +90,7 @@ let private pickI cont mapper chooser (dict: IReadOnlyDictionary<'k, 'v>) =
 
 
 let pick chooser dict =
-  pickI (raise (KeyNotFoundException())) id chooser dict
+  pickI raiseKeyEx id chooser dict
 
 let tryPick chooser dict = 
   pickI (fun _ -> None) Some chooser dict
