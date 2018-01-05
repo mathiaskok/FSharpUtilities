@@ -1,7 +1,6 @@
 module FSharpUtilities.Dictionary.ReadOnly
 
 open System.Collections.Generic
-open System.Xml.Linq
 
 let private toKvpFun p (kvp: KeyValuePair<'k, 'v>) = p kvp.Key kvp.Value
 
@@ -40,8 +39,6 @@ let tryFindKey predicate dict =
 let fold (folder: 'a -> 'b -> 'c -> 'a) state (dict: IReadOnlyDictionary<'b, 'c>) =
   Seq.fold (toKvpFolder folder) state dict
 
-//foldback
-
 let forall predicate (dict: IReadOnlyDictionary<'a, 'b>) =
   Seq.forall (toKvpFun predicate) dict
 
@@ -49,16 +46,6 @@ let isEmpty: IReadOnlyDictionary<'a, 'b> -> bool = Seq.isEmpty
 
 let iter action (dict: IReadOnlyDictionary<'a, 'b>) =
   Seq.iter (toKvpFun action) dict
-
-//map
-
-//filter
-
-//ofArray
-
-//ofList
-
-//ofSeq
 
 let toSeq (dict: IReadOnlyDictionary<'a, 'b>) =
   Seq.map kvpToTuple dict
@@ -74,9 +61,7 @@ let toArray (dict: IReadOnlyDictionary<'a, 'b>) =
     i <- i+1
 
   Seq.iter action dict
-  arr    
-
-//partition
+  arr
 
 let private pickI cont mapper chooser (dict: IReadOnlyDictionary<'k, 'v>) =
   let valid = 
@@ -87,7 +72,6 @@ let private pickI cont mapper chooser (dict: IReadOnlyDictionary<'k, 'v>) =
   match Seq.tryHead valid with
   | Some (Some x) -> mapper x
   | _ -> cont()
-
 
 let pick chooser dict =
   pickI raiseKeyEx id chooser dict
