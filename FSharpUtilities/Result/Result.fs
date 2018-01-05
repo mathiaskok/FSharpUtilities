@@ -1,9 +1,9 @@
 ﻿namespace FSharpUtilities
 module Result =
 
-  type Result<'success, 'failure> =
-    | Success of 'success
-    | Failure of 'failure
+  type Result<'f, 's> =
+    | Success of 's
+    | Failure of 'f
 
 
   let map mapper rx = 
