@@ -1,44 +1,28 @@
-﻿namespace FSharpUtilities
-module Result =
+﻿module FSharpUtilities.Result
 
-  type Result<'f, 's> =
-    | Success of 's
-    | Failure of 'f
+let apply rf rx =
+  match rf with
+  | Ok f -> Result.map f rx
+  | Error f -> Error f
 
+let (<*>) = apply
 
-  let map mapper rx = 
-    match rx with
-    | Success s -> Success (mapper s)
-    | Failure f -> Failure f
+let bind rx binder =
+  match rx with
+  | Ok x -> binder x
+  | Error f -> Error f
 
-  let apply rf rx =
-    match rf with
-    | Success f -> map f rx
-    | Failure f -> Failure f
+let (>>=) = bind
 
-  let (<*>) = apply
+let join res = bind res id
 
-  let bind rx binder =
-    match rx with
-    | Success x -> binder x
-    | Failure f -> Failure f
+let map2 mapper rx ry = Result.map mapper rx <*> ry
 
-  let (>>=) = bind
+let map3 mapper rx ry rz = Result.map mapper rx <*> ry <*> rz
 
-  let join res = bind res id
-
-  let map2 mapper rx ry = map mapper rx <*> ry
-
-  let map3 mapper rx ry rz = map mapper rx <*> ry <*> rz
-
-  let mapFailure mapper rx =
-    match rx with
-    | Success s -> Success s
-    | Failure f -> Failure (mapper f)
-
-  let combine sMapper fMapper r1 r2 =
-    match (r1, r2) with
-    | (Success s1, Success s2) -> Success (sMapper s1 s2)
-    | (Success _, Failure f) -> Failure f
-    | (Failure f, Success _) -> Failure f
-    | (Failure f1, Failure f2) -> Failure (fMapper f1 f2)
+let combine sMapper fMapper r1 r2 =
+  match (r1, r2) with
+  | (Ok s1, Ok s2) -> Error (sMapper s1 s2)
+  | (Ok _, Error f) -> Error f
+  | (Error f, Ok _) -> Error f
+  | (Error f1, Error f2) -> Error (fMapper f1 f2)
