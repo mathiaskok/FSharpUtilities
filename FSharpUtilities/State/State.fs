@@ -2,6 +2,8 @@ module FSharpUtilities.State
 
 type State<'s, 'a> = 's -> 'a * 's
 
+let ret a : State<'s,'a> = fun s -> (a,s)
+
 let map mapper (state: State<'s, 'a>) : State<'s, 'b> =
   fun s ->
     let (a, state) = state s

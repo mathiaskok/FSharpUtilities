@@ -17,6 +17,8 @@
     <Compile Include="State\StateBuilder.fs" />
     <Compile Include="Writer.fs" />
     <Compile Include="Dictionary\ReadOnlyDictionary.fs"/>
+    <Compile Include="Unique\IntUnique.fs" />
+    <Compile Include="Unique\StrUnique.fs" />
   </ItemGroup>
 
 </Project>
