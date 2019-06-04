@@ -11,12 +11,11 @@
     <Compile Include="Option\Option.fs" />
     <Compile Include="Option\OptionBuilder.fs" />
     <Compile Include="Reader.fs" />
-    <Compile Include="Result\Result.fs" />
-    <Compile Include="Result\ResultBuilder.fs" />
     <Compile Include="State\State.fs" />
     <Compile Include="State\StateBuilder.fs" />
     <Compile Include="Writer.fs" />
     <Compile Include="Dictionary\ReadOnlyDictionary.fs"/>
+    <Compile Include="Validation\Validation.fs"/>
     <Compile Include="Unique\IntUnique.fs" />
     <Compile Include="Unique\StrUnique.fs" />
   </ItemGroup>
