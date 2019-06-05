@@ -15,9 +15,12 @@
     <Compile Include="State\StateBuilder.fs" />
     <Compile Include="Writer.fs" />
     <Compile Include="Dictionary\ReadOnlyDictionary.fs"/>
+    <Compile Include="Result\Result.fs"/>
+    <Compile Include="Result\ResultBuilder.fs"/>
     <Compile Include="Validation\Validation.fs"/>
     <Compile Include="Unique\IntUnique.fs" />
     <Compile Include="Unique\StrUnique.fs" />
+    <Compile Include="Inference\InferenceMonad.fs" />
   </ItemGroup>
 
 </Project>

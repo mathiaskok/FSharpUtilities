@@ -7,7 +7,7 @@ module ResultBuilder =
   type ResultBuilder() = 
     member __.Bind(r, binder) = bind r binder
 
-    member __.Return(s) = Success s
+    member __.Return(s) = Ok s
 
     member __.ReturnFrom(r) = r
 
@@ -22,11 +22,7 @@ module ResultBuilder =
 
     member __.Bind(r, binder) = bind r binder
 
-    member __.Yield(s) = Success s
-
     member __.YieldFrom(r) = r
-
-    member __.Combine(r1, r2) = combine sCombiner fCombiner r1 r2
 
     member __.Delay(f) = f()
 
