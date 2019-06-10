@@ -1,13 +1,8 @@
 module FSharpUtilities.Validation
 
-open System
 open FSharpUtilities.General
 
 type Validation<'s, 'f> = Result<'s, 'f seq>
-
-let private ret : ('s -> Validation<'s,'f>) = Result.Ok
-
-let private returnFrom : (Validation<'s, 'f> -> Validation<'s, 'f>) = id
 
 let map (func: 's1 -> 's2) (va: Validation<'s1,'f>) : Validation<'s2,'f> = 
   match va with
@@ -59,34 +54,14 @@ let applyValidationFunc3 func =
 let applyValidationFunc4 func =
   liftValidation4 (fromFunc4 func)
 
-let private tryWith (body: unit -> Validation<'s,'f>) (handler: exn -> Validation<'s,'f>) : Validation<'s,'f> =
-  try
-    returnFrom(body())
-  with
-    | e -> handler e  
-
-let private tryFinally (body: unit -> Validation<'s,'f>) (compensation: unit -> unit) =
-  try
-    returnFrom(body())
-  finally
-    compensation()  
-
-let private using (disposable:#System.IDisposable) (body) =
-  let body = fun () -> body disposable
-  tryFinally body (fun () -> 
-    match disposable with
-    | null -> ()
-    | disp -> disp.Dispose())
-
-
 type ValidationBuilder() = 
-  member this.Return(x) = ret x
-  member this.ReturnFrom(vx) = returnFrom
+  member this.Return(x) = Ok x
+  member this.ReturnFrom(vx) = StandardBuilderFunctions.returnFrom vx
   member this.Bind(x,binder) = bind x binder
   member this.Delay(func) = func()
-  member this.TryWith(body,hanlder) = tryWith body hanlder
-  member this.TryFinally(body,compensation) = tryFinally body compensation
-  member this.Using(disp,body) = using disp body
+  member this.TryWith(body,hanlder) = StandardBuilderFunctions.tryWith body hanlder
+  member this.TryFinally(body,compensation) = StandardBuilderFunctions.tryFinally body compensation
+  member this.Using(disp,body) = StandardBuilderFunctions.using disp body
 
 
 let validation = ValidationBuilder()

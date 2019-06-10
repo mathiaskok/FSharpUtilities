@@ -1,26 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="General.fs" />
-    <Compile Include="Lazy\Lazy.fs" />
-    <Compile Include="Lazy\LazyBuilder.fs" />
-    <Compile Include="Option\Option.fs" />
-    <Compile Include="Option\OptionBuilder.fs" />
+    <Compile Include="StandardBuilderFunctions.fs" />
+    <Compile Include="Lazy/Lazy.fs" />
+    <Compile Include="Lazy/LazyBuilder.fs" />
+    <Compile Include="Option/Option.fs" />
+    <Compile Include="Option/OptionBuilder.fs" />
     <Compile Include="Reader.fs" />
-    <Compile Include="State\State.fs" />
-    <Compile Include="State\StateBuilder.fs" />
+    <Compile Include="State/State.fs" />
+    <Compile Include="State/StateBuilder.fs" />
     <Compile Include="Writer.fs" />
-    <Compile Include="Dictionary\ReadOnlyDictionary.fs"/>
-    <Compile Include="Result\Result.fs"/>
-    <Compile Include="Result\ResultBuilder.fs"/>
-    <Compile Include="Validation\Validation.fs"/>
-    <Compile Include="Unique\IntUnique.fs" />
-    <Compile Include="Unique\StrUnique.fs" />
-    <Compile Include="Inference\InferenceMonad.fs" />
+    <Compile Include="Dictionary/ReadOnlyDictionary.fs" />
+    <Compile Include="Result/Result.fs" />
+    <Compile Include="Result/ResultBuilder.fs" />
+    <Compile Include="Validation/Validation.fs" />
+    <Compile Include="Unique/IntUnique.fs" />
+    <Compile Include="Unique/StrUnique.fs" />
+    <Compile Include="Inference/InferenceMonad.fs" />
   </ItemGroup>
-
 </Project>
