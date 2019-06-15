@@ -1,14 +1,34 @@
-﻿namespace FSharpUtilities
-module Reader =
+﻿module FSharpUtilities.Reader
 
-  type ReaderBuilder() =
-    member __.Return(x) = fun _ -> x
+type Reader<'s,'a> = 's -> 'a
+
+let ret a : Reader<'s,'a> = fun _ -> a
+
+let map func (ra: Reader<'s,'a>) : Reader<'s,'b> =
+  fun s ->
+    let a = ra s
+    func a
     
-    member __.ReturnFrom(r) = r
+let apply (rfunc: Reader<'s,'a -> 'b>) (ra: Reader<'s,'a>) : Reader<'s,'b> =
+  fun s ->
+    let func = rfunc s
+    let a = ra s
+    func a
 
-    member __.Bind(reader, binder) =
-      fun env ->
-        let x = reader env
-        binder x env
+let bind (ra: Reader<'s,'a>) (binder: 'a -> Reader<'s,'b>) : Reader<'s,'b> =
+  fun s ->
+    let a = ra s
+    binder a s
 
-  let reader = ReaderBuilder()
+let join (rra: Reader<'s,Reader<'s,'a>>) : Reader<'s,'a> =
+  fun s ->
+    let ra = rra s
+    ra s
+
+type ReaderBuilder() =
+  inherit StandardBuilderFunctions.BuilderBase()
+
+  member __.Return(x) = ret x
+  member __.Bind(s, binder) = bind s binder
+
+let reader = ReaderBuilder()

@@ -29,7 +29,7 @@ type InferenceBuilder() =
   member this.ReturnFrom(vx) = StandardBuilderFunctions.returnFrom vx
   member this.Bind(x,binder) = bind x binder
   member this.Delay(func) = func()
-  member this.TryWith(body,hanlder) = StandardBuilderFunctions.tryWith body hanlder
+  member this.TryWith(body,handler) = StandardBuilderFunctions.tryWith body handler
   member this.TryFinally(body,compensation) = StandardBuilderFunctions.tryFinally body compensation
   member this.Using(disp,body) = StandardBuilderFunctions.using disp body
 

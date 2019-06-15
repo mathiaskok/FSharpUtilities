@@ -20,3 +20,11 @@ let using (disposable:#System.IDisposable) body =
     match disposable with
     | null -> ()
     | disp -> disp.Dispose())
+
+[<AbstractClass>]
+type BuilderBase() =
+  member __.ReturnFrom(r) = returnFrom r
+  member __.Delay(f) = f()
+  member __.TryWith(body,handler) = tryWith body handler
+  member __.TryFinally(body,compensation) = tryFinally body compensation
+  member __.Using(disp,body) = using disp body
