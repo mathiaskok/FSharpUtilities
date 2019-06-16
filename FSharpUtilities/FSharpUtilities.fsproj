@@ -8,8 +8,7 @@
     <Compile Include="Lazy.fs" />
     <Compile Include="Option.fs" />
     <Compile Include="Reader.fs" />
-    <Compile Include="State/State.fs" />
-    <Compile Include="State/StateBuilder.fs" />
+    <Compile Include="State.fs" />
     <Compile Include="Writer.fs" />
     <Compile Include="Dictionary/ReadOnlyDictionary.fs" />
     <Compile Include="Result/Result.fs" />
