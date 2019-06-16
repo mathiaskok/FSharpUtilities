@@ -5,8 +5,7 @@
   <ItemGroup>
     <Compile Include="General.fs" />
     <Compile Include="StandardBuilderFunctions.fs" />
-    <Compile Include="Lazy/Lazy.fs" />
-    <Compile Include="Lazy/LazyBuilder.fs" />
+    <Compile Include="Lazy.fs" />
     <Compile Include="Option/Option.fs" />
     <Compile Include="Option/OptionBuilder.fs" />
     <Compile Include="Reader.fs" />
