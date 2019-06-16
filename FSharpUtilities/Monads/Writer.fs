@@ -1,4 +1,4 @@
-﻿module FSharpUtilities.Writer  
+﻿module FSharpUtilities.Monads.Writer  
 
 type Writer<'a,'s> = 'a * 's
 type WriterMonoid<'s> = 's -> 's -> 's

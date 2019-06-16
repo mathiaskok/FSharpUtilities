@@ -1,4 +1,4 @@
-﻿module FSharpUtilities.Lazy
+﻿module FSharpUtilities.Monads.Lazy
 
 let ret x = lazy(x)
 

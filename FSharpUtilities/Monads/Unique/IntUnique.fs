@@ -1,4 +1,4 @@
-module FSharpUtilities.IntUnique
+module FSharpUtilities.Monads.IntUnique
 
 type IntUnique = private IntUnique of int
 

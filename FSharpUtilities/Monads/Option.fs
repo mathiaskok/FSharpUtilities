@@ -1,4 +1,4 @@
-﻿module FSharpUtilities.Option
+﻿module FSharpUtilities.Monads.Option
 open System
 open FSharpUtilities.General
 

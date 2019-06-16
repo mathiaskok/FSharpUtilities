@@ -1,4 +1,4 @@
-module FSharpUtilities.StrUnique
+module FSharpUtilities.Monads.StrUnique
 
 type StrUnique = private StrUnique of string
 

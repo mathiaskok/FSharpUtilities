@@ -1,4 +1,4 @@
-﻿module FSharpUtilities.Result
+﻿module FSharpUtilities.Monads.Result
 
 let apply rf rx =
   match rf with

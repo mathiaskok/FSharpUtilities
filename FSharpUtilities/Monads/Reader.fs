@@ -1,4 +1,4 @@
-﻿module FSharpUtilities.Reader
+﻿module FSharpUtilities.Monads.Reader
 
 type Reader<'s,'a> = 's -> 'a
 

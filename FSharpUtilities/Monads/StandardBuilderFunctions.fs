@@ -1,4 +1,4 @@
-module FSharpUtilities.StandardBuilderFunctions
+module FSharpUtilities.Monads.StandardBuilderFunctions
 
 let returnFrom = id
 

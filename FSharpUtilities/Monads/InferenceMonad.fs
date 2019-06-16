@@ -1,4 +1,4 @@
-module FSharpUtilities.InferenceMonad
+module FSharpUtilities.Monads.InferenceMonad
 
 type InferenceMonad<'a,'err> = StrUnique.StrUniqueMonad<Result<'a, 'err>>
 

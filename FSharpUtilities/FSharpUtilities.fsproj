@@ -4,18 +4,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="General.fs" />
-    
-    <Compile Include="StandardBuilderFunctions.fs" />
-    <Compile Include="Lazy.fs" />
-    <Compile Include="Option.fs" />
-    <Compile Include="Reader.fs" />
-    <Compile Include="State.fs" />
-    <Compile Include="Writer.fs" />
-    <Compile Include="Result.fs" />
-    <Compile Include="Validation.fs" />
-    <Compile Include="Unique/IntUnique.fs" />
-    <Compile Include="Unique/StrUnique.fs" />
-    <Compile Include="InferenceMonad.fs" />
+
+    <Compile Include="Monads/StandardBuilderFunctions.fs" />
+    <Compile Include="Monads/Lazy.fs" />
+    <Compile Include="Monads/Option.fs" />
+    <Compile Include="Monads/Reader.fs" />
+    <Compile Include="Monads/State.fs" />
+    <Compile Include="Monads/Writer.fs" />
+    <Compile Include="Monads/Result.fs" />
+    <Compile Include="Monads/Validation.fs" />
+    <Compile Include="Monads/Unique/IntUnique.fs" />
+    <Compile Include="Monads/Unique/StrUnique.fs" />
+    <Compile Include="Monads/InferenceMonad.fs" />
 
     <Compile Include="Dictionary/ReadOnlyDictionary.fs" />
   </ItemGroup>

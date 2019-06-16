@@ -1,4 +1,4 @@
-module FSharpUtilities.Validation
+module FSharpUtilities.Monads.Validation
 
 open FSharpUtilities.General
 

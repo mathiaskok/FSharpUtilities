@@ -1,4 +1,4 @@
-module FSharpUtilities.State
+module FSharpUtilities.Monads.State
 
 type State<'s,'a> = 's -> 'a * 's
 
