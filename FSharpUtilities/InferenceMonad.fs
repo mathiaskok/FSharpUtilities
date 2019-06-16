@@ -25,12 +25,9 @@ let join (a:InferenceMonad<InferenceMonad<'a,'err>,'err>) : InferenceMonad<'a,'e
   bind a id
 
 type InferenceBuilder() = 
+  inherit StandardBuilderFunctions.BuilderBase()
+
   member this.Return(x) = ret x
-  member this.ReturnFrom(vx) = StandardBuilderFunctions.returnFrom vx
   member this.Bind(x,binder) = bind x binder
-  member this.Delay(func) = func()
-  member this.TryWith(body,handler) = StandardBuilderFunctions.tryWith body handler
-  member this.TryFinally(body,compensation) = StandardBuilderFunctions.tryFinally body compensation
-  member this.Using(disp,body) = StandardBuilderFunctions.using disp body
 
 let inference = InferenceBuilder()

@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="General.fs" />
+    
     <Compile Include="StandardBuilderFunctions.fs" />
     <Compile Include="Lazy.fs" />
     <Compile Include="Option.fs" />
@@ -11,10 +12,10 @@
     <Compile Include="State.fs" />
     <Compile Include="Writer.fs" />
     <Compile Include="Result.fs" />
-    <Compile Include="Validation/Validation.fs" />
+    <Compile Include="Validation.fs" />
     <Compile Include="Unique/IntUnique.fs" />
     <Compile Include="Unique/StrUnique.fs" />
-    <Compile Include="Inference/InferenceMonad.fs" />
+    <Compile Include="InferenceMonad.fs" />
 
     <Compile Include="Dictionary/ReadOnlyDictionary.fs" />
   </ItemGroup>

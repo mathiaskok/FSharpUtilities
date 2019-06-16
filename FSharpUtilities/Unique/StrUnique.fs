@@ -10,7 +10,7 @@ let private exceptLastChar (s:string) = s.Substring(0,s.Length - 1)
 
 let private lastChar (s:string) = s.Chars (s.Length - 1)
 
-let rec private nextStr =
+let rec nextStr =
   function
   | "" -> "a"
   | s -> 

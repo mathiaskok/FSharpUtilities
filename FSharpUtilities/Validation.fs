@@ -21,14 +21,12 @@ let apply (vFunc: Validation<'s1 -> 's2, 'f>) (va: Validation<'s1,'f>) : (Valida
   | (Error err, _) -> Error err
   | (_, Error err) -> Error err
 
-let (<*>) = apply
+let private (<*>) = apply
 
 let bind (va: Validation<'s1,'f>) (binder: 's1 -> Validation<'s2,'f>) : Validation<'s2,'f> =
   match va with
   | Ok s -> binder s
   | Error f -> Error f
-
-let (>>=) = bind
 
 let liftValidation1 func vx = 
   map func vx
@@ -55,13 +53,10 @@ let applyValidationFunc4 func =
   liftValidation4 (fromFunc4 func)
 
 type ValidationBuilder() = 
+  inherit StandardBuilderFunctions.BuilderBase()
+
   member this.Return(x) = Ok x
-  member this.ReturnFrom(vx) = StandardBuilderFunctions.returnFrom vx
   member this.Bind(x,binder) = bind x binder
-  member this.Delay(func) = func()
-  member this.TryWith(body,hanlder) = StandardBuilderFunctions.tryWith body hanlder
-  member this.TryFinally(body,compensation) = StandardBuilderFunctions.tryFinally body compensation
-  member this.Using(disp,body) = StandardBuilderFunctions.using disp body
 
 
 let validation = ValidationBuilder()
