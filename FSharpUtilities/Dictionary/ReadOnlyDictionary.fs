@@ -1,4 +1,4 @@
-module FSharpUtilities.Dictionary.ReadOnly
+module FSharpUtilities.Dictionary.ReadOnlyDictionary
 
 open System.Collections.Generic
 
