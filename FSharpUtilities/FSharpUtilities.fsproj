@@ -17,6 +17,7 @@
     <Compile Include="Monads/Unique/StrUnique.fs" />
     <Compile Include="Monads/InferenceMonad.fs" />
 
+    <Compile Include="Dictionary/KeyValuePair.fs" />
     <Compile Include="Dictionary/ReadOnlyDictionary.fs" />
   </ItemGroup>
 </Project>
