@@ -5,14 +5,12 @@ let apply rf rx =
   | Ok f -> Result.map f rx
   | Error f -> Error f
 
-let (<*>) = apply
+let private (<*>) = apply
 
 let bind rx binder =
   match rx with
   | Ok x -> binder x
   | Error f -> Error f
-
-let (>>=) = bind
 
 let join res = bind res id
 
@@ -26,3 +24,12 @@ let combine sMapper fMapper r1 r2 =
   | (Ok _, Error f) -> Error f
   | (Error f, Ok _) -> Error f
   | (Error f1, Error f2) -> Error (fMapper f1 f2)
+
+type ResultBuilder() = 
+  inherit StandardBuilderFunctions.BuilderBase()
+
+  member __.Return(s) = Ok s
+  member __.Bind(r, binder) = bind r binder
+
+
+let result = ResultBuilder()
